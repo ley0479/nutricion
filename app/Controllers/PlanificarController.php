@@ -55,16 +55,16 @@ class PlanificarController extends Controller
         session()->setFlashdata('success', 'Comida guardada exitosamente.');
         return redirect()->to(base_url('/planificar-comidas'));
     }
-    public function eliminar($user_id, $dia, $creado_en)
+    public function eliminar($user_id, $dia, $id)
     {
         // Cargar el modelo que maneja la planificación
     
         // Validar la existencia del registro
-        $registro = $this->planificar->obtener_planificacion($user_id, $dia, $creado_en);
+        $registro = $this->planificar->obtener_planificacion( $id,$user_id, $dia);
     
         if ($registro) {
             // Si existe, eliminar
-            $this->planificar->eliminar_planificacion($user_id, $dia, $creado_en);
+            $this->planificar->eliminar_planificacion($user_id, $dia, $id);
            session()->setFlashdata('success', 'Planificación eliminada exitosamente.');
         } else {
             // Si no existe, mostrar error
@@ -72,25 +72,31 @@ class PlanificarController extends Controller
         }
     
         // Redirigir a la página de planificación
-        return redirect()->to(base_url('planificar-comidas'));
+        return redirect()->to(base_url('/planificar-comidas'));
     }
     // actualizar
-    public function update($user_id, $dia, $creado_en){
+    public function update($id){
        
+        $session = session();
         // Validar la existencia del registro
-        $registro = $this->planificar->obtener_planificacion($user_id, $dia, $creado_en);
+        $user_id =$session->get('id');
+
+        $dia = $this->request->getPost('dia');
+      
+        $registro = $this->planificar->obtener_planificacion($id, $user_id, $dia);
         
         if ($registro) {
             // Si existe, obtener los datos del formulario
             $datos = $this->request->getPost();
             // Actualizar los datos del registro
-            $this->planificar->actualizar_planificacion($datos);
+            $this->planificar->actualizar_planificacion($id, $user_id, $dia, $datos);
             session()->setFlashdata('success', 'Planificación actualizada exitosamente.');
         } else {
             // Si no existe, mostrar error
             session()->setFlashdata('errors', 'No se encontró la planificación para actualizar.');
     
         }
+        return redirect()->to(base_url('/planificar-comidas'));
 
     }
     

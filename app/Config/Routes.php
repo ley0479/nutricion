@@ -26,7 +26,7 @@ $routes->post('/eliminar-progreso', 'SeguimientoController::eliminarProgreso');
 $routes->get('/planificar-comidas', 'PlanificarController::planificar');
 $routes->post('/planificador/guardar_planificacion', 'PlanificarController::guardarPlanificacion');
 $routes->get('/planificador/eliminar/(:num)/(:any)/(:any)', 'PlanificarController::eliminar/$1/$2/$3');
-$routes->post('/planificador/marcar_realizado/(:num)','PlanificacionController::update/1$');
+$routes->post('/planificador/marcar_realizado/(:num)','PlanificarController::update/$1');
 
 // recetas
 $routes->get('/recetas-basadas-a-la-planificacion', 'RecetasController::sugerencias');

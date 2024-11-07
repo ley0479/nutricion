@@ -34,27 +34,27 @@ class PlanificadorModel extends Model
             $this->insert($data);
         }
     }
-    public function obtener_planificacion($user_id, $dia, $creado_en)
+    public function obtener_planificacion($id, $user_id, $dia)
     {
-        return $this->where('user_id', $user_id)
+        return $this->where('id', $id)
+                        ->where('user_id', $user_id)
                         ->where('dia', $dia)
-                        ->where('creado_en', $creado_en)
                         ->get() // Cambia 'planificaciones' al nombre de tu tabla
                         ->getRowArray();
     }
     
-    public function eliminar_planificacion($user_id, $dia, $creado_en)
+    public function eliminar_planificacion($user_id, $dia, $id)
     {
-        return $this->where('user_id', $user_id)
-                        ->where('dia', $dia)
-                        ->where('creado_en', $creado_en)
+        return $this->where('id', $id)
+        ->where('user_id', $user_id)
+        ->where('dia', $dia)
                         ->delete(); // Cambia 'planificaciones' al nombre de tu tabla
     }
     
-    public function actualizar_planificacion($user_id, $dia, $creado_en, $datos){
-        return $this->where('user_id', $user_id)
-                        ->where('dia', $dia)
-                        ->where('creado_en', $creado_en)
+    public function actualizar_planificacion($id, $user_id, $dia, $datos){
+        return $this->where('id', $id)
+        ->where('user_id', $user_id)
+        ->where('dia', $dia)
                         ->set($datos)
                         ->update(); // Cambia 'planificaciones' al nombre de tu tabla
     }

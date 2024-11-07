@@ -15,15 +15,9 @@ class RegistroController extends Controller
     }
     public function registro()
     {
-        $session = session();
-
-        if (empty($session->get('logged_in'))) {
-            return redirect()->to(base_url('/login'));
-        } else {
-
             helper(['form']);
             echo view('layout/login/register');
-        }
+        
     }
 
     public function guardarRegistro()

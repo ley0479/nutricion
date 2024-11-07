@@ -131,15 +131,36 @@ class RecomendacionesController extends Controller
             <section class="content-header text-center">
                 <h2>Recomendaciones Personalizadas por la IA</h2>
             </section>
-            <br>
-            <p style="text-align: justify;">
-    Basado en tu perfil, aquí tienes algunas recomendaciones personalizadas de ejercicio y dieta, 
+                    <br>
+            <style>
+    .contenedor {
+        width: 100%;
+        max-width: 800px;
+        /* Ajusta el ancho máximo del contenedor según tus necesidades */
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #253544;
+        color: white;
+        text-align: justify;
+                border-radius: 25px;
+
+    }
+
+    p {
+        text-align: justify;
+    }
+    </style>
+    <hr>
+
+    <div class="contenedor">
+        <p>  Basado en tu perfil, aquí tienes algunas recomendaciones personalizadas de ejercicio y dieta, 
     generadas por nuestro módulo de inteligencia artificial. Este sistema analiza tu información personal, 
     como condiciones médicas, peso, altura y nivel de actividad, para ofrecerte un plan adaptado a tus necesidades. 
     A continuación, encontrarás recomendaciones específicas diseñadas para ayudarte a alcanzar tus objetivos de salud y bienestar.
-             </p>
-
-            <br>
+        </p>
+    </div>
+    <br>
             <section class="content ">
                 <div class="row justify-content-center">
                             <div class="col-md-8 bg-white p-4" style="border-radius: 8px;">' . $perfilInfo . '</div>
