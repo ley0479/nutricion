@@ -1,0 +1,11 @@
+* text=auto
+git add .gitattributes
+git commit -m "Agrega .gitattributes para mantener saltos de línea consistentes"
+# Elimina todos los archivos del índice
+git rm --cached -r .
+
+# Agrega nuevamente todos los archivos
+git add .
+
+# Confirma los cambios
+git commit -m "Normalizar todos los saltos de línea"
